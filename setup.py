@@ -23,7 +23,7 @@ setup(
     url=github_link,
     packages=find_packages(),
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
@@ -39,14 +39,14 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Utilities",
-        "Typing :: Typed",
+        # "Typing :: Typed",
     ],
     license="MIT",
     keywords=[
-        "formatting", "python formatting",
-        "format", "python format",
-        "optional format", "optional formatting",
-        "default format", "default formatting",
+        "format", "formatting", "formatter",
+        "python format", "python formatting", "python formatter",
+        "optional format", "optional formatting", "optional formatter",
+        "default format", "default formatting", "default formatter",
     ],
     project_urls={
         # "Documentation": "Coming soon",

@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 
-__version__ = "0.1.2"
+__version__ = "0.2.0"
 __name__ = "pyformatting"
 
 
-from .correct_version import OptionalFormatter
+from .optional_format import OptionalFormatter
+from .default_format import DefaultFormatter, defaultformatter
 
 __all__ = (
     "OptionalFormatter",
     "optional_format",
+    "DefaultFormatter",
+    "defaultformatter",
 )
 
 
