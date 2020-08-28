@@ -18,7 +18,7 @@
 python >= 3.4:
 
 ```python
->>> from pyformatting import optional_format, defaultformatter
+>>> from pyformatting import optional_format
 >>> optional_format('{}{other}{some}', some=[1, 2])
 '{}{other}[1, 2]'
 ```
