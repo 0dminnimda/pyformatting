@@ -8,7 +8,7 @@
 '0.123{other}'
 >>> optional_format('{0.imag}{1}{2}{0.real}', 1+3j)
 '3.0{1}{2}1.0'
->>> optional_format('{first}{string!r}{4}', string="cool")
+>>> optional_format('{first}{string!r}{4}', string='cool')
 "{first}'cool'{4}"
 ```
 
