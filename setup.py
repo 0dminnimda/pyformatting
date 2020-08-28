@@ -15,7 +15,7 @@ github_link = "https://github.com/0dminnimda/{}".format(__name__)
 setup(
     name=__name__,
     version=__version__,
-    description="",
+    description="Pyformatting is a collection of useful formatting features.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="0dminnimda",
