@@ -1,0 +1,7 @@
+site_name: pyformatting
+nav:
+    - Home: index.md
+    - Docs:
+      - Getting started: getting-started.md
+      - Optional formatting: optional.md
+theme: readthedocs
