@@ -1,53 +1,40 @@
 # Optional formatting
 
+The [optional_format()](#optional_format) method, the [str.format()](https://docs.python.org/3/library/stdtypes.html#str.format) method, [OptionalFormatter](#optionalformatter) class and the [Formatter](https://docs.python.org/3/library/string.html#string.Formatter) class share the same syntax for format strings.
+
 ## optional_format
 
-this function - [`OptionalFormatter().format`](#optionalformatter)
+The [optional_format()](#optional_format) method is equivalent to [OptionalFormatter().format](#optionalformatter) method
 
 Does not require entering all the variables represented by fields in the string.
 The rest is [str.format](https://docs.python.org/3/library/stdtypes.html#str.format) functionality.
 
-### Example 1
-
-```python
->>> from pyformatting import optional_format
->>> txt = optional_format('{1}{2}{0}', 'first')
->>> txt
-'{1}{2}first'
->>> optional_format(txt, '--', 'second')
-'second{2}first'
-```
-
-In the first case, only one field was formatted.
-In the second case, only the second argument was used for formatting.
-
-### Example 2
-
-```python
->>> txt = optional_format('{b}{c}{a}', a='first')
->>> txt
-'{b}{c}first'
->>> optional_format(txt, a='--', b='second')
-'second{c}first'
-```
-
-Here is the same as in the [first example](#example-1), only with keyword arguments.
-
-### Example 3
-
-requires python >= 3.4
-
-```python
->>> txt = optional_format('{}{}{}', 'first')
->>> txt
-'first{}{}'
->>> optional_format(txt, '--', 'second')
-'first--second'
-```
-
-Empty fields will use all arguments, regardless of position.
-
 ## OptionalFormatter
 
 Inherits from [string.Formatter](https://docs.python.org/3/library/string.html#string.Formatter) and changes its behavior.  
-Has different implementations depending on the python version.
+Has different implementations depending on the python version. (need to change)
+
+## Examples
+
+Accessing arguments by position:
+
+```python
+>>> from pyformatting import optional_format
+>>> optional_format('{0}{2}{1}', 'first')  # only one field will be formatted
+'first{2}{1}'
+>>> optional_format('first{2}{1}', '--', 'third')  # only the second argument will be used
+'second{1}first'
+>>> optional_format('{}{}{}', 'first')
+'first{}{}'
+>>> optional_format('first{}{}', '--', 'third')  # empty fields will use all arguments
+'first--third'
+```
+
+Accessing arguments by name:
+
+```python
+>>> optional_format('{a}{b}{c}', a='first')
+'first{b}{c}'
+>>> optional_format('first{b}{c}', a='--', c='third')
+'first{b}third'
+```

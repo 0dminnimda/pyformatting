@@ -4,4 +4,5 @@ nav:
     - Docs:
       - Getting started: getting-started.md
       - Optional formatting: optional.md
+      - Default formatting: default.md
 theme: readthedocs

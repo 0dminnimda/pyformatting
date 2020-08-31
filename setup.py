@@ -10,7 +10,7 @@ with open("README.md", "r") as file:
 with open("requirements/common.txt", "r") as file:
     requirements = [line.strip() for line in file]
 
-github_link = "https://github.com/0dminnimda/{}".format(__name__)
+github_link = "https://github.com/0dminnimda/{0}".format(__name__)
 
 setup(
     name=__name__,
@@ -43,20 +43,20 @@ setup(
     ],
     license="MIT",
     keywords=[
-        "format", "formatting", "formatter",
-        "python format", "python formatting", "python formatter",
-        "optional format", "optional formatting", "optional formatter",
-        "default format", "default formatting", "default formatter",
+        "format, formatting, formatter",
+        "python format, python formatting, python formatter",
+        "optional format, optional formatting, optional formatter",
+        "default format, default formatting, default formatter",
     ],
     project_urls={
-        # "Documentation": "Coming soon",
+        "Documentation": "https://pyformatting.readthedocs.io/en/latest/",
         # "Funding": "Haven\'t done yet :(",
         "Say Thanks!": "https://saythanks.io/to/0dminnimda%40gmail.com",
         # "Source": github_link,
         # as long as the `url` parameter does not differ from
         # `project_urls["Source"]`, the latter is meaningless
         "Bug tracker": github_link + "/issues",
-        "Code examples": github_link + "/tree/master/examples",
+        # "Code examples": github_link + "/tree/master/examples",
     },
     install_requires=requirements,
     python_requires="~=3.0",
