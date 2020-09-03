@@ -1,17 +1,20 @@
 # -*- coding: utf-8 -*-
 
-from helpers import PY_32, PY_34, PY_37, PY_38
+from .helpers import PY_32, PY_34, PY_37, PY_38
 
-try:
+try:  # 3.0, 3.1
     _formatter_parser = str._formatter_parser
     _formatter_field_name_split = str._formatter_field_name_split
-except AttributeError:
+except AttributeError:  # 3.2+
     from _string import (
         formatter_parser as _formatter_parser,
         formatter_field_name_split as _formatter_field_name_split)
 
 
-__all__ = ("BaseFormatter")
+__all__ = (
+    "BaseFormatter",
+    "_formatter_parser",
+    "_formatter_field_name_split")
 
 
 class BaseFormatter:
@@ -21,7 +24,7 @@ class BaseFormatter:
                             "needs an argument")
         self, *args = args  # allow the "self" keyword be passed
         try:
-            format_string, *args = args # allow the "format_string" keyword be passed
+            format_string, *args = args  # allow the "format_string" keyword be passed
         except ValueError:
             raise TypeError("format() missing 1 required positional "
                             "argument: 'format_string'") from None
@@ -144,11 +147,11 @@ class BaseFormatter:
 
 
 if PY_38:
-    from format_38 import _format
+    from .format_38 import _format
 
     class BaseFormatter(BaseFormatter):
         format = _format
-elif PY_34 and not PY_37:  # 34, 35, 36
+elif PY_34 and not PY_37:  # 3.4, 3.5, 3.6
     def _format(*args, **kwargs):
         if not args:
             raise TypeError("descriptor 'format' of 'Formatter' object "
@@ -198,4 +201,5 @@ else:
         """
         pass
 
-BaseFormatter().format("{}", 5)
+
+breakpoint
