@@ -13,11 +13,6 @@
 >>> default_format = defaultformatter(int)
 >>> default_format('{zero}{data}{zero_again}', data={1: 2})
 '0{1: 2}0'
-```
-
-python >= 3.4:
-
-```python
 >>> from pyformatting import optional_format
 >>> optional_format('{}{other}{some}', some=[1, 2])
 '{}{other}[1, 2]'
@@ -31,4 +26,8 @@ Pyformatting is available on PyPI:
 python -m pip install -U pyformatting
 ```
 
-Pyformatting supports Python 3.0+.
+Pyformatting supports Python 3.1+.
+
+## Development Status
+
+Pre-Alpha
