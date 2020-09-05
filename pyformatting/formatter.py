@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from .base_formatter import BaseFormatter, _formatter_field_name_split
+from .helpers import PY_32
 
-__all__ = ("FastFormatter")
+__all__ = ("Formatter")
 
 
-class FastFormatter(BaseFormatter):
+class Formatter(BaseFormatter):
     def vformat(self, format_string, args, kwargs):
-        return self._vformat(format_string, args, kwargs, 2)[0]
+        used_args = set()
+        result, _ = self._vformat(format_string, args, kwargs, used_args, 2)
+        self.check_unused_args(used_args, args, kwargs)
+        return result
 
-    def _vformat(self, format_string, args, kwargs, recursion_depth,
+    def _vformat(self, format_string, args, kwargs, used_args, recursion_depth,
                  auto_arg_index=0):
         if recursion_depth < 0:
             raise ValueError('Max string recursion exceeded')
@@ -44,14 +48,17 @@ class FastFormatter(BaseFormatter):
                     auto_arg_index = False
 
                 # given the field_name, find the object it references
-                obj = self.get_field(field_name, args, kwargs)
+                #  and the argument it came from
+                obj, arg_used = self.get_field(field_name, args, kwargs)
+                used_args.add(arg_used)
 
                 # do any conversion on the resulting object
                 obj = self.convert_field(obj, conversion)
 
                 # expand the format spec, if needed
                 format_spec, auto_arg_index = self._vformat(
-                    format_spec, args, kwargs, recursion_depth-1,
+                    format_spec, args, kwargs,
+                    used_args, recursion_depth-1,
                     auto_arg_index=auto_arg_index)
 
                 # format the object and append to the result
@@ -59,10 +66,14 @@ class FastFormatter(BaseFormatter):
 
         return ''.join(result), auto_arg_index
 
+    def check_unused_args(self, used_args, args, kwargs):
+        pass
+
     def get_field(self, field_name, args, kwargs):
         """given a field_name, find the object it references.
          field_name:   the field being looked up, e.g. "0.name"
                         or "lookup[3]"
+         used_args:    a set of which args have been used
          args, kwargs: as passed in to vformat
         """
         first, rest = _formatter_field_name_split(field_name)
@@ -77,4 +88,31 @@ class FastFormatter(BaseFormatter):
             else:
                 obj = obj[i]
 
-        return obj
+        return obj, first
+
+
+# add class docs
+if PY_32:
+    class BaseFormatter(BaseFormatter):
+        """the Formatter class
+        see PEP 3101 for details and purpose of this class
+
+        The hard parts are reused from the C implementation.
+        They're exposed as "_" prefixed methods of str.
+
+        The overall parser is implemented in _string.formatter_parser.
+        The field name parser is implemented in _string.formatter_field_name_split
+        """
+        pass
+else:
+    class BaseFormatter(BaseFormatter):
+        """the Formatter class
+        see PEP 3101 for details and purpose of this class
+
+        The hard parts are reused from the C implementation.
+        They're exposed as "_" prefixed methods of str and unicode.
+
+        The overall parser is implemented in str._formatter_parser.
+        The field name parser is implemented in str._formatter_field_name_split
+        """
+        pass

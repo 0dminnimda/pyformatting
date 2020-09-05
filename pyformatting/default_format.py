@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import string
+from .base_formatter import BaseFormatter
 
 __all__ = (
     "DefaultFormatter",
@@ -8,7 +8,7 @@ __all__ = (
 )
 
 
-class DefaultFormatter(string.Formatter):
+class DefaultFormatter(BaseFormatter):
     def __init__(self, default_factory):
         self.default_factory = default_factory
 
