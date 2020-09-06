@@ -13,13 +13,15 @@
 "{1: 2}''"
 ```
 
-## Installing Pyformatting and Supported Versions
+## Installing Pyformatting
 
 Pyformatting is available on PyPI:
 
 ```console
 python -m pip install -U pyformatting
 ```
+
+## Supported Versions
 
 Pyformatting supports Python 3.1+.
 
