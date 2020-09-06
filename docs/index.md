@@ -13,7 +13,7 @@
 "{1: 2}''"
 ```
 
-## Installing Pyformatting and Supported Versions
+## Installing Pyformatting
 
 Pyformatting is available on PyPI:
 
@@ -21,8 +21,7 @@ Pyformatting is available on PyPI:
 python -m pip install -U pyformatting
 ```
 
-> [!NOTE]
-> Information the user should notice even if skimming.
+## Supported Versions
 
 Pyformatting supports Python 3.1+.
 
