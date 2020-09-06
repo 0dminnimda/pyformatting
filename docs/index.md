@@ -21,6 +21,9 @@ Pyformatting is available on PyPI:
 python -m pip install -U pyformatting
 ```
 
+> [!NOTE]
+> Information the user should notice even if skimming.
+
 Pyformatting supports Python 3.1+.
 
 ## Development Status
