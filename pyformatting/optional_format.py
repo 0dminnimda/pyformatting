@@ -66,7 +66,7 @@ class OptionalFormatter(BaseFormatter):
                         obj += "!" + conversion
 
                     # append format_spec to object if there is format_spec
-                    if format_spec is not None:
+                    if format_spec:
                         obj += ":" + format_spec
 
                     obj = "{" + obj + "}"
@@ -90,7 +90,7 @@ class OptionalFormatter(BaseFormatter):
         else:
             return str(key), False
 
-    def get_field(self, field_name, args, kwargs):
+    def get_field(self, field_name, field_name_is_empty, args, kwargs):
         """given a field_name, find the object it references.
          field_name:   the field being looked up, e.g. "0.name"
                         or "lookup[3]"
@@ -98,7 +98,8 @@ class OptionalFormatter(BaseFormatter):
         """
         first, rest = _formatter_field_name_split(field_name)
 
-        obj, apply_format = self.get_value(first, args, kwargs)
+        obj, apply_format = self.get_value(
+            first, field_name_is_empty, args, kwargs)
 
         # if apply format loop through the rest of the field_name, doing
         #  getattr or getitem as needed
