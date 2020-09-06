@@ -19,7 +19,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="0dminnimda",
-    author_email="0dminnimda@gmail.com",
+    author_email="0dminnimda.contact@gmail.com",
     url=github_link,
     packages=find_packages(),
     classifiers=[
@@ -50,12 +50,12 @@ setup(
     project_urls={
         "Documentation": "https://pyformatting.readthedocs.io/en/latest/",
         # "Funding": "Haven\'t done yet :(",
-        "Say Thanks!": "https://saythanks.io/to/0dminnimda%40gmail.com",
+        "Say Thanks!": "https://saythanks.io/to/"\
+        "0dminnimda.contact%40gmail.com",
         # "Source": github_link,
         # as long as the `url` parameter does not differ from
         # `project_urls["Source"]`, the latter is meaningless
         "Bug tracker": github_link + "/issues",
-        # "Code examples": github_link + "/tree/master/examples",
     },
     install_requires=requirements,
     python_requires="~=3.1",

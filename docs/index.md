@@ -4,18 +4,13 @@
 
 ```python
 >>> from pyformatting import optional_format, defaultformatter
->>> optional_format('{number:.3f}{other}', number=.12345)
-'0.123{other}'
->>> optional_format('{0.imag}{1}{2}{0.real}', 1+3j)
-'3.0{1}{2}1.0'
->>> optional_format('{first}{string!r}{42}', string='cool')
-"{first}'cool'{42}"
->>> default_format = defaultformatter(int)
->>> default_format('{zero}{data}{zero_again}', data={1: 2})
-'0{1: 2}0'
->>> from pyformatting import optional_format
->>> optional_format('{}{other}{some}', some=[1, 2])
-'{}{other}[1, 2]'
+>>> optional_format('{:.3f}{other:.5f}{}', .12345)
+'0.123{other:.5f}{}'
+>>> optional_format('{0[0]}{1!a}{2}{0[1]!r}', 'cool')
+"c{1!a}{2}'o'"
+>>> default_format = defaultformatter(str)
+>>> default_format('{nothing}{data}{quotes!r}', data={1: 2})
+"{1: 2}''"
 ```
 
 ## Installing Pyformatting and Supported Versions
