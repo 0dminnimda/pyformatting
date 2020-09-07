@@ -27,4 +27,4 @@ Pyformatting supports Python 3.1+.
 
 ## Development Status
 
-Pre-Alpha
+Alpha
